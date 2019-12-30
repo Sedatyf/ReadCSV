@@ -5,13 +5,13 @@ import java.io.IOException;
 import java.util.HashMap;
 import com.opencsv.CSVReader;
 
-public class ReadCSV1 {
+public class ReadCSV {
 
 	private CSVReader reader;
 	private HashMap<String, Integer> columnIndices;
 	private String[] currentLine;
 
-	public ReadCSV1(String filePath) throws IOException {
+	public ReadCSV(String filePath) throws IOException {
 		// Build Reader Instance
 		//// Read register.csv
 		//// Default seperator is ;

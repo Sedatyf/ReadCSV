@@ -20,7 +20,7 @@ import junitparams.mappers.CsvWithHeaderMapper;
 @RunWith(JUnitParamsRunner.class)
 public class Test_RealCase {
 
-	private static ReadCSV1 reader;
+	private static ReadCSV reader;
 	WebDriver driver;
 	static final String filePath = "src/test/resources/realcase.csv";
 
@@ -30,7 +30,7 @@ public class Test_RealCase {
 	// first line of your map
 	public static void initialize() {
 		try {
-			reader = new ReadCSV1(filePath);
+			reader = new ReadCSV(filePath);
 		} catch (Exception e) {
 			System.out.println("Fichier introuvable : " + e);
 		}

@@ -10,14 +10,14 @@ import junitparams.mappers.CsvWithHeaderMapper;
 @RunWith(JUnitParamsRunner.class)
 public class Test_Parametre_JUnitParams_CSV {
 	
-	private static ReadCSV1 reader;
+	private static ReadCSV reader;
 	
 	@BeforeClass
 	// BeforeClass here is mandatory because if you don't have BeforeClass you will instantiate several reader and you will have only the
 	// first line of your map
 	public static void initialize() {
 		try {
-			reader = new ReadCSV1("src/test/resources/test.csv");
+			reader = new ReadCSV("src/test/resources/test.csv");
 		} catch (Exception e) {
 			System.out.println("Fichier introuvable : " + e);
 		}
