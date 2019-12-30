@@ -29,6 +29,6 @@ Then you need to annotate a method with @BeforeClass. In this method you initial
 Finally, in your @Test method, you need to use @FileParameters with, again, your filepath, and the CsvWithHeaderMapper.class in mapper.
 In the method you have to precise all your parameters (ie : all your columns in your CSV file).
 
-### Test_Realcase
+### Test_Realcase.java
 This test class is strictly the same as before but with a sign-in form in a practice website. It's using **realcase.csv** in **src/test/resources**
 In the @Before method, you have to change the path of your web driver to make it work.
