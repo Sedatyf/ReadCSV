@@ -1,35 +1,56 @@
 package usecsvfile.sedatyf;
 
 import java.io.FileReader;
-import java.util.Arrays;
-
+import java.io.IOException;
+import java.util.HashMap;
 import com.opencsv.CSVReader;
 
 public class ReadCSV1 {
 
-	public static String getValue(String filePath, String itemName) throws Exception {
+	private CSVReader reader;
+	private HashMap<String, Integer> columnIndices;
+	private String[] currentLine;
+
+	public ReadCSV1(String filePath) throws IOException {
 		// Build Reader Instance
 		//// Read register.csv
 		//// Default seperator is ;
 		//// Default quote character is double quote
 		//// Start reading from line number 0
-		CSVReader reader = new CSVReader(new FileReader(filePath), ',', '"', 0);
+		reader = new CSVReader(new FileReader(filePath), ',', '"', 0);
 
 		// Read CSV first line, in my case, I want to read header
-		String[] nextCol = reader.readNext();
+		String[] header = reader.readNext();
 
-		// Get index of the matching header string
-		int pos = Arrays.asList(nextCol).indexOf(itemName);
-		
-		// Read CSV line by line 
-		while ((nextCol = reader.readNext()) != null) {
-			
-			//If index != -1 return values from matching columns
-			if (pos != -1) {
-				return nextCol[pos];
-			}
+		columnIndices = new HashMap<String, Integer>();
+		nextLine();
+
+		// Store keys and values from the header
+		//// header[i] will be our itemName
+		for (int i = 0; i < header.length; i++) {
+			columnIndices.put(header[i], i);
 		}
-		return null;
 	}
 	
+	public void nextLine() throws IOException {
+		currentLine = reader.readNext();
+	}
+
+	public String getValue(String itemName) throws IOException {
+		
+		if(currentLine == null) {
+			return null;
+		} 
+		
+		// Return null if your itemName does not exist
+		if(!columnIndices.containsKey(itemName)) {
+			System.out.println("Votre élément n'existe pas");
+			return null;
+		}
+		// Get index from header according to the specified itemName
+		int pos = columnIndices.get(itemName);
+		// Return the specific value according to the specified itemName and testCases
+		return currentLine[pos];
+	}
+
 }
