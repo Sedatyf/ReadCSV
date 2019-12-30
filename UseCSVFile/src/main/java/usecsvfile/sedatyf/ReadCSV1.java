@@ -1,16 +1,19 @@
+package usecsvfile.sedatyf;
+
 import java.io.FileReader;
 import java.util.Arrays;
+
 import com.opencsv.CSVReader;
 
-public class Final {
+public class ReadCSV1 {
 
-	public String getValue(String filePath, String itemName) throws Exception {
+	public static String getValue(String filePath, String itemName) throws Exception {
 		// Build Reader Instance
 		//// Read register.csv
 		//// Default seperator is ;
 		//// Default quote character is double quote
 		//// Start reading from line number 0
-		CSVReader reader = new CSVReader(new FileReader(filePath), ';', '"', 0);
+		CSVReader reader = new CSVReader(new FileReader(filePath), ',', '"', 0);
 
 		// Read CSV first line, in my case, I want to read header
 		String[] nextCol = reader.readNext();
@@ -28,5 +31,5 @@ public class Final {
 		}
 		return null;
 	}
-
+	
 }
