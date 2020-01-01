@@ -58,6 +58,8 @@ public class Test_RealCase {
 		WebElement input_password = driver.findElement(By.name("passwd"));
 		
 		input_password.sendKeys(reader.getValue("password"));
+		// This reader.nextLine() call is mandatory. If you don't call it, you will access only on the first line of your CSV
+		// file. If you want to access all your datas for all your fields, you need to use this method. 
 		reader.nextLine();
 		
 		driver.findElement(By.name("SubmitLogin")).click();
